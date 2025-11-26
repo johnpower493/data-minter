@@ -16,7 +16,7 @@ python synthetic_data_generator.py generate products.csv --num-rows 1000
 Use batch processing to handle all files at once:
 ```bash
 # Batch approach (efficient)
-python batch_processor.py process-batch input_data/ output_data/ --num-rows 1000
+python batch_processor.py input_data/ output_data/ --num-rows 1000
 ```
 
 ## 📂 Directory Structure
@@ -47,7 +47,7 @@ output_data/
 
 ### Basic Command
 ```bash
-python batch_processor.py process-batch <input_dir> <output_dir> [options]
+python batch_processor.py <input_dir> <output_dir> [options]
 ```
 
 ### Parameters
@@ -65,7 +65,7 @@ python batch_processor.py process-batch <input_dir> <output_dir> [options]
 #### Basic Batch Processing
 ```bash
 # Process all CSV files in data/ directory
-python batch_processor.py process-batch data/ output/
+python batch_processor.py data/ output/
 ```
 
 #### Custom Row Count
@@ -128,7 +128,7 @@ While batch processing uses consistent settings, you can still customize per dat
 .\run_production.ps1 -Command batch -InputFile "data\" -NumRows 5000
 
 # Direct Python command
-python batch_processor.py process-batch data\ output\ --num-rows 5000
+python batch_processor.py data\ output\ --num-rows 5000
 ```
 
 ### Linux/macOS
@@ -137,7 +137,7 @@ python batch_processor.py process-batch data\ output\ --num-rows 5000
 make batch DIR=data/ ROWS=5000
 
 # Direct Python command  
-python batch_processor.py process-batch data/ output/ --num-rows 5000
+python batch_processor.py data/ output/ --num-rows 5000
 ```
 
 ## 📊 Output and Reporting
@@ -188,14 +188,14 @@ Errors encountered:
 Generate synthetic data for all tables in a database schema:
 ```bash
 # Process entire database schema
-python batch_processor.py process-batch schema_exports/ synthetic_db/ --num-rows 10000
+python batch_processor.py schema_exports/ synthetic_db/ --num-rows 10000
 ```
 
 ### 2. ETL Pipeline Testing
 Create test data for data pipeline validation:
 ```bash
 # Generate pipeline test data
-python batch_processor.py process-batch pipeline_samples/ test_data/ \
+python batch_processor.py pipeline_samples/ test_data/ \
   --config-file pipeline_config.yaml
 ```
 
@@ -203,7 +203,7 @@ python batch_processor.py process-batch pipeline_samples/ test_data/ \
 Populate development databases across team:
 ```bash
 # Create dev environment data
-python batch_processor.py process-batch prod_samples/ dev_data/ \
+python batch_processor.py prod_samples/ dev_data/ \
   --num-rows 1000 \
   --model granite4:latest  # Latest granite model
 ```
@@ -212,7 +212,7 @@ python batch_processor.py process-batch prod_samples/ dev_data/ \
 Automate synthetic data generation in build pipelines:
 ```bash
 # In CI/CD script
-python batch_processor.py process-batch test_schemas/ generated_test_data/ \
+python batch_processor.py test_schemas/ generated_test_data/ \
   --config-file ci_config.yaml \
   --num-rows 500
 ```
@@ -249,7 +249,7 @@ advanced:
 Combine with quality validation:
 ```bash
 # Process and validate all files
-python batch_processor.py process-batch data/ output/ --config-file config.yaml
+python batch_processor.py data/ output/ --config-file config.yaml
 
 # Then validate each generated file
 for file in output/synthetic_*.csv; do
@@ -285,7 +285,7 @@ done
 ### With Database Validator
 ```bash
 # Generate and validate entire schema
-python batch_processor.py process-batch schema/ synthetic_schema/ --num-rows 5000
+python batch_processor.py schema/ synthetic_schema/ --num-rows 5000
 python database_validator.py validate-csv synthetic_schema/synthetic_*.csv --schema-file schema.sql
 ```
 
@@ -302,7 +302,7 @@ make batch-validate ORIGINAL_DIR=data/ SYNTHETIC_DIR=output/
 ### With Version Control
 ```bash
 # Generate reproducible datasets
-python batch_processor.py process-batch data/ output/ \
+python batch_processor.py data/ output/ \
   --config-file config/v1.2.yaml \
   --seed 12345  # Reproducible results
 ```
