@@ -1,0 +1,55 @@
+# Synthetic Data Generation Configuration Template
+
+# Basic generation settings
+num_rows: 1000
+preserve_relationships: true
+anonymization_level: "medium"  # low, medium, high
+output_format: "csv"  # csv, json, parquet
+seed: 42  # for reproducible results
+ollama_model: "granite4:latest"  # or granite4:1b, etc.
+max_decimal_places: 2  # Maximum decimal places for numeric values
+preserve_decimal_places: true  # Preserve original decimal precision
+
+# Column-specific precision rules
+column_precision_rules:
+  price: 2          # Force 2 decimals for price columns
+  cost: 2           # Force 2 decimals for cost columns
+  weight: 3         # Force 3 decimals for weight
+  percentage: 2     # Force 2 decimals for percentages
+  count: 0          # Force integers for count columns
+
+# Database compatibility settings
+database_compatibility: true
+use_fixed_point: true        # Use precise decimal arithmetic for financial data
+
+# Custom patterns for specific data types
+custom_patterns:
+  email_domains: ["company.com", "test.org", "example.net"]
+  phone_country_codes: ["+1", "+44", "+49", "+33"]
+  id_prefixes: ["USR", "ORD", "INV", "TXN"]
+  
+# Advanced settings
+advanced:
+  # Correlation preservation between columns
+  preserve_correlations: true
+  
+  # Data quality controls
+  quality_controls:
+    min_uniqueness_ratio: 0.8  # Minimum uniqueness compared to original
+    max_null_deviation: 5.0    # Max % difference in null values
+    
+  # LLM generation settings
+  llm_settings:
+    batch_size: 50
+    max_retries: 3
+    temperature: 0.3  # Lower temperature for more consistent, less creative output
+    clean_output: true  # Remove markdown and formatting
+    strict_format: true  # Enforce strict format compliance
+    max_field_length: 255  # Maximum length for generated text fields
+    prevent_duplicates: true  # Remove duplicate values from generated data
+    
+  # Privacy settings
+  privacy:
+    anonymize_names: true
+    scramble_ids: true
+    generalize_locations: true

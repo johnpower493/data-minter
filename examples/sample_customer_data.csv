@@ -1,0 +1,6 @@
+customer_id,first_name,last_name,email,phone,registration_date,age,city,annual_income,subscription_tier,is_active
+CUST001,John,Smith,john.smith@email.com,+1-555-0123,2023-01-15,34,New York,75000.50,premium,true
+CUST002,Sarah,Johnson,sarah.j@company.net,+1-555-0456,2023-02-20,28,Los Angeles,82000.00,standard,true
+CUST003,Michael,Brown,m.brown@test.org,+1-555-0789,2023-01-08,45,Chicago,95000.25,premium,false
+CUST004,Emily,Davis,emily.davis@example.com,+1-555-0321,2023-03-12,31,Houston,68000.75,basic,true
+CUST005,David,Wilson,d.wilson@sample.net,+1-555-0654,2023-02-28,39,Phoenix,71500.00,standard,true
